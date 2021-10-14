@@ -1,0 +1,5 @@
+package io.github.grishaninvyacheslav.stock_stroke_alert.ui.presenters.users_tickers
+
+import io.github.grishaninvyacheslav.stock_stroke_alert.ui.presenters.IListPresenter
+
+interface IUsersTickersListPresenter : IListPresenter<TickerItemView>

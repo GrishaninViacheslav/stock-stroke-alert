@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="вернуться на прошлый экран"
+        android:textColor="@color/design_default_color_primary"
+        app:icon="@drawable/outline_arrow_back_24"
+        app:iconTint="@color/design_default_color_primary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ticker_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin"
+        android:gravity="center"
+        android:text="TSLA"
+        android:textSize="30sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back_button" />
+
+    <TextView
+        android:id="@+id/curr_quote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="758.12"
+        android:layout_marginLeft="@dimen/margin"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/ticker_name"
+        app:layout_constraintTop_toBottomOf="@id/back_button" />
+
+    <TextView
+        android:id="@+id/quote_change"
+        tools:text="-5%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:textColor="@color/red"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/curr_quote"
+        app:layout_constraintTop_toTopOf="@id/curr_quote" />
+
+    <TextView
+        android:id="@+id/stock_exchange_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin"
+        android:gravity="right"
+        android:text="Закрыто:\n 1 сент., 19:59 GMT-4"
+        app:layout_constraintBottom_toTopOf="@id/chart"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintLeft_toRightOf="@id/curr_quote"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <com.github.mikephil.charting.charts.CandleStickChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ticker_name" />
+
+    <View
+        android:id="@+id/chart_interact_blocker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/chart"
+        app:layout_constraintLeft_toLeftOf="@id/chart"
+        app:layout_constraintRight_toRightOf="@id/chart"
+        app:layout_constraintTop_toTopOf="@id/chart" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_hide_history_preview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="@string/button_hide_history_preview"
+        android:textAlignment="center"
+        app:icon="@drawable/outline_unfold_less_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/button_switch_to_candlestick_chart"
+        app:layout_constraintTop_toBottomOf="@id/chart" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_switch_to_candlestick_chart"
+        android:layout_width="@dimen/button_chart_type_switch_size"
+        android:layout_height="@dimen/button_chart_type_switch_size"
+        android:layout_marginRight="@dimen/margin_small"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        app:icon="@drawable/outline_candlestick_chart_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toTopOf="@id/button_to_history"
+        app:layout_constraintRight_toLeftOf="@id/button_switch_to_line_chart"
+        app:layout_constraintTop_toBottomOf="@id/chart" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_switch_to_line_chart"
+        android:layout_width="@dimen/button_chart_type_switch_size"
+        android:layout_height="@dimen/button_chart_type_switch_size"
+        android:layout_marginRight="@dimen/margin"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        app:icon="@drawable/outline_show_chart_24"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toTopOf="@id/button_to_history"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chart" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_to_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin"
+        android:insetTop="@dimen/margin_small"
+        android:insetBottom="0dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="@string/button_to_history"
+        app:icon="@drawable/outline_arrow_forward_24"
+        app:iconGravity="end"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_hide_history_preview" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ticker_trackers_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/margin"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toTopOf="@id/button_create_ticker"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_to_history" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_create_ticker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin"
+        android:insetTop="0dp"
+        android:text="@string/button_create_ticker"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
